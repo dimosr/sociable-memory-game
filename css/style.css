@@ -1,0 +1,49 @@
+#palette{
+	width: 60%;
+	height: 500px;
+	margin: 20%;
+	background-size: 100% 100%;
+	background-image: url("../img/palette.png");
+	overflow: auto;
+}
+
+.colors{
+	margin-left:50%;
+	margin-top: 20%;
+}
+
+#color-1{
+	background-color:blue;
+	width:50px;
+	height: 50px;
+	float: left;
+	margin-right: 30%;
+	margin-bottom: 10%;
+}
+
+#color-2{
+	background-color:green;
+	width:50px;
+	height: 50px;
+	float: left;
+	margin-right: 30%;
+	margin-bottom: 10%;
+}
+
+#color-3{
+	background-color:red;
+	width:50px;
+	height: 50px;
+	float: left;
+	margin-right: 30%;
+	margin-bottom: 10%;
+}
+
+#color-4{
+	background-color:black;
+	width:50px;
+	height: 50px;
+	float: left;
+	margin-right: 30%;
+	margin-bottom: 10%;
+}
