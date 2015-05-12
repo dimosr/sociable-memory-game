@@ -1,4 +1,4 @@
-$( document ).ready(function() {
+$(document).ready(function() {
 
     $('.colors').click(function(){
 		//$(this).animate({"width": "-=5px", "height": "-=5px" }, "fast" ).animate({"width": "+=5px", "height": "+=5px" }, "fast" );
@@ -6,3 +6,7 @@ $( document ).ready(function() {
 	});
 
 });
+
+function flashElement(elementID){
+		$('.colors:not(#' + elementID + ')').fadeOut(1500).fadeIn(1500);
+}
