@@ -8,5 +8,6 @@ $(document).ready(function() {
 });
 
 function flashElement(elementID){
-		$('.colors:not(#' + elementID + ')').fadeOut(1500).fadeIn(1500);
+		$('.colors:not(#' + elementID + ')').fadeOut(500).fadeIn(500);
+		$('#next-color').css('display','block').hide().fadeIn(500).fadeOut(500);
 }
