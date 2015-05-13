@@ -9,7 +9,7 @@ h1{
 	margin-left:5%;
 }
 
-#instructions, #statistics{
+#instructions, #statistics, #moves{
 	background-color: #E9C89E;
 	float:left;
 	padding: 2%;
@@ -28,6 +28,13 @@ h1{
 	line-height: 60px;
 }
 
+#moves-label{
+	float:left;
+	width: 80px;
+	height: 80px;
+	line-height: 60px;
+}
+
 #star{
 	background-image: url("../img/star.png");
 	width: 60px;
@@ -39,6 +46,20 @@ h1{
 	line-height: 60px;
 	text-align: center;
 	color: #E9C89E;
+}
+
+#moves-value{
+	width: 45px;
+	height: 45px;
+	font-size:25px;
+	float:left;
+	line-height: 45px;
+	text-align: center;
+	background-color: #533816;
+	color: #E9C89E;
+	border-radius: 100%;
+	position: relative;
+	top: 8px;
 }
 
 #palette{
