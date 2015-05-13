@@ -1,3 +1,25 @@
+body{
+	background-color: #533816;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+h1{
+	color: #E9C89E;
+	margin-top:5%;
+	margin-left:5%;
+}
+
+#instructions{
+	background-color: #E9C89E;
+	float:left;
+	padding: 2%;
+	margin-left: 5%;
+	border-radius: 15%;
+	color: #533816;
+	font-size:20px;
+}
+
+
 #palette{
 	width: 60%;
 	height: 500px;
