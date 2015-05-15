@@ -33,7 +33,7 @@ Game.prototype.proceedToNextLevel = function(){
 	this.resetMoves();
 	var nextColor = this.getRandomColor();
 	this.colorsSequence.push(nextColor);
-	this.flashElement(nextColor);
+	this.flashSequence(this.colorsSequence);
 }
 
 Game.prototype.handleNextMove = function(selectedColorNumber){
@@ -67,11 +67,29 @@ Game.prototype.getRandomColor = function(){
 	return Math.round(Math.random()*(this.colorObjects.length-1));
 }
 
-Game.prototype.flashElement = function(elementNumber){
+Game.prototype.flashPreviousElement = function(elementNumber){
 	var that = this;
 	var elementID = this.colorObjects[elementNumber].id;
 	$('.' + this.colorContainerClass + ':not(#' + elementID + ')').fadeTo(this.flashEffectInterval, 0).delay(this.flashEffectInterval*4).fadeTo(this.flashEffectInterval, 1);
-	$('#' + this.nextClass).css('display','block').hide().fadeTo(this.flashEffectInterval, 1).delay(this.flashEffectInterval*4).fadeTo(this.flashEffectInterval, 0);
+}
+
+Game.prototype.flashElement = function(elementNumber){
+	var elementID = this.colorObjects[elementNumber].id;
+	$('#' + elementID).fadeTo(this.flashEffectInterval, 1).fadeTo(this.flashEffectInterval, 0);
+}
+
+Game.prototype.flashSequence = function(sequence){
+	var that = this;
+	$('.' + this.colorContainerClass).fadeTo(this.flashEffectInterval, 0);
+	if(sequence != null){
+		for(i=0; i<sequence.length; i++){
+			var colourNumber = sequence[i];
+			(function(number){
+				setTimeout(function(){that.flashElement(number)},that.flashEffectInterval*4*(i+1));
+			})(colourNumber);
+		}
+	}
+	setTimeout(function(){$('.' + that.colorContainerClass).fadeTo(that.flashEffectInterval, 1)}, that.flashEffectInterval*4*(sequence.length+1));
 }
 
 Game.prototype.end = function(){
