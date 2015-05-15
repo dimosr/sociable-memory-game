@@ -47,7 +47,8 @@ Game.prototype.handleNextMove = function(selectedColorNumber){
 	}
 	else{
 		if(this.movesMade == this.currentLevel){
-			this.proceedToNextLevel();
+			var that = this;
+			setTimeout(function(){that.proceedToNextLevel();}, that.clickEffectInterval*5);
 		}
 		else{
 			this.movesSequence[this.movesMade-1];
@@ -61,7 +62,8 @@ Game.prototype.getRandomColor = function(){
 }
 
 Game.prototype.flashElement = function(elementNumber){
+	var that = this;
 	var elementID = this.colorObjects[elementNumber].id;
-	$('.' + this.colorContainerClass + ':not(#' + elementID + ')').fadeOut(this.flashEffectInterval).fadeIn(this.flashEffectInterval);
-	$('#' + this.nextClass).css('display','block').hide().fadeIn(this.flashEffectInterval).fadeOut(this.flashEffectInterval);
+	$('.' + this.colorContainerClass + ':not(#' + elementID + ')').fadeTo(this.flashEffectInterval, 0).delay(this.flashEffectInterval*4).fadeTo(this.flashEffectInterval, 1);
+	$('#' + this.nextClass).css('display','block').hide().fadeTo(this.flashEffectInterval, 1).delay(this.flashEffectInterval*4).fadeTo(this.flashEffectInterval, 0);
 }
