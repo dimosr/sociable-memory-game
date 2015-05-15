@@ -76,4 +76,5 @@ Game.prototype.flashElement = function(elementNumber){
 
 Game.prototype.end = function(){
 	$('.colors').unbind('click');
+	$('#play').show();
 }

@@ -1,10 +1,19 @@
 $(document).ready(function() {
 
+    $('#play').click(function(){
+    	game = initiateGame();
+    	game.proceedToNextLevel();
+    	$('#play').hide();
+    })
+
+});
+
+function initiateGame(){
 	var colorIDs = ['color-1', 'color-2', 'color-3', 'color-4'];
 	var colorsNumber = 4;
-	var game = new Game(0, 50, 0, 200, 8, 200, "colors", "next-color", colorsNumber, colorIDs);
+	var game = new Game(0, 3, 0, 200, 8, 200, "colors", "next-color", colorsNumber, colorIDs);
 
-    $('.colors').click(function(){
+	$('.colors').click(function(){
 		$(this).animate({"width": "-=" + game.clickEffectWidth + "px"}, game.clickEffectInterval ).animate({"width": "+=" + game.clickEffectWidth + "px"}, game.clickEffectInterval );
 		var id = $(this).attr('id');
 		for(i=0; i<game.colorObjects.length; i++){
@@ -15,14 +24,8 @@ $(document).ready(function() {
 		game.handleNextMove(colorNumber);
 	});
 
-    $('#play').click(function(){
-    	game.proceedToNextLevel();
-    	$('#play').hide();
-    })
-
-});
-
-
+	return game;
+}
 
 /* IE fix */
 
