@@ -21,6 +21,24 @@ h1{
 	box-shadow: 0 0 0 5px #B7823F;
 }
 
+#play{
+	position: fixed;
+	background-color: #E9C89E;
+	padding: 2%;
+	border-radius: 15%;
+	color: #533816;
+	font-size:20px;
+	border: 2px dashed  #ffffff;
+	box-shadow: 0 0 0 5px #B7823F;
+	background-image: url("../img/play.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	width: 60px;
+	height: 30px;
+	bottom: 40%;
+	cursor: pointer;
+}
+
 #level{
 	float:left;
 	width: 60px;
