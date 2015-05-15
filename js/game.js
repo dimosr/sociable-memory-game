@@ -81,6 +81,7 @@ Game.prototype.flashElement = function(elementNumber){
 Game.prototype.flashSequence = function(sequence){
 	var that = this;
 	$('.' + this.colorContainerClass).fadeTo(this.flashEffectInterval, 0);
+	$('#' + this.nextClass).fadeTo(this.flashEffectInterval, 1);
 	if(sequence != null){
 		for(i=0; i<sequence.length; i++){
 			var colourNumber = sequence[i];
@@ -90,6 +91,7 @@ Game.prototype.flashSequence = function(sequence){
 		}
 	}
 	setTimeout(function(){$('.' + that.colorContainerClass).fadeTo(that.flashEffectInterval, 1)}, that.flashEffectInterval*4*(sequence.length+1));
+	setTimeout(function(){$('#' + that.nextClass).fadeTo(that.flashEffectInterval, 0)}, that.flashEffectInterval*4*(sequence.length+1));
 }
 
 Game.prototype.end = function(){
