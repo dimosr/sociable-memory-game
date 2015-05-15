@@ -43,12 +43,18 @@ Game.prototype.handleNextMove = function(selectedColorNumber){
 	console.log('right : ' + this.colorsSequence[this.movesMade-1]);
 	if(selectedColorNumber != this.colorsSequence[this.movesMade-1]){
 		alert('You lost');
-		$('.colors').unbind('click');
+		this.end();
 	}
 	else{
 		if(this.movesMade == this.currentLevel){
-			var that = this;
-			setTimeout(function(){that.proceedToNextLevel();}, that.clickEffectInterval*5);
+			if(this.currentLevel == this.maximumLevels){
+				alert("You won!");
+				this.end();
+			}
+			else{
+				var that = this;
+				setTimeout(function(){that.proceedToNextLevel();}, that.clickEffectInterval*5);
+			}
 		}
 		else{
 			this.movesSequence[this.movesMade-1];
@@ -66,4 +72,8 @@ Game.prototype.flashElement = function(elementNumber){
 	var elementID = this.colorObjects[elementNumber].id;
 	$('.' + this.colorContainerClass + ':not(#' + elementID + ')').fadeTo(this.flashEffectInterval, 0).delay(this.flashEffectInterval*4).fadeTo(this.flashEffectInterval, 1);
 	$('#' + this.nextClass).css('display','block').hide().fadeTo(this.flashEffectInterval, 1).delay(this.flashEffectInterval*4).fadeTo(this.flashEffectInterval, 0);
+}
+
+Game.prototype.end = function(){
+	$('.colors').unbind('click');
 }
