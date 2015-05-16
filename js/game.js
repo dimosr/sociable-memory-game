@@ -97,10 +97,12 @@ Game.prototype.end = function(gameResult){
 	var end = (new Date()).getTime();
 	var secondsPlayed = Math.floor((end-this.startMoment)/1000);
 	if(gameResult == 0){
-		alert("You lost ! Seconds played : " + secondsPlayed + ", Level reached: " + this.currentLevel);
+		$('#result').html("You lost ! <br/>Seconds played : <b>" + secondsPlayed + "</b><br/>Level reached: <b>" + this.currentLevel +"</b>");
+		$('#result').dialog();
 	}
 	else if(gameResult == 1){
-		alert("You won ! Seconds played : " + secondsPlayed + ", Level reached: " + (this.maximumLevels + 1));
+		$('#result').html("You won ! <br/>Seconds played : <b>" + secondsPlayed + "</b><br/>Level reached: <b>" + (this.maximumLevels + 1) + "</b>");
+		$('#result').dialog();
 	}
 	$('.colors').unbind('click');
 	$('#play').show();
