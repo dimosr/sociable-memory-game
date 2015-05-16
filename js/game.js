@@ -15,6 +15,7 @@ function Game(currentLevel, maxLevels, movesMade, clickInterval, clickWidth, fla
 		var temp = {'id': colorIDs[i]};
 		this.colorObjects[i] = temp;
 	}
+	this.startMoment = (new Date()).getTime();
 }
 
 Game.prototype.upgradeLevel = function(){
@@ -42,14 +43,12 @@ Game.prototype.handleNextMove = function(selectedColorNumber){
 	console.log('selected : ' + selectedColorNumber);
 	console.log('right : ' + this.colorsSequence[this.movesMade-1]);
 	if(selectedColorNumber != this.colorsSequence[this.movesMade-1]){
-		alert('You lost');
-		this.end();
+		this.end(0);
 	}
 	else{
 		if(this.movesMade == this.currentLevel){
 			if(this.currentLevel == this.maximumLevels){
-				alert("You won!");
-				this.end();
+				this.end(1);
 			}
 			else{
 				var that = this;
@@ -94,7 +93,15 @@ Game.prototype.flashSequence = function(sequence){
 	setTimeout(function(){$('#' + that.nextClass).fadeTo(that.flashEffectInterval, 0)}, that.flashEffectInterval*4*(sequence.length+1));
 }
 
-Game.prototype.end = function(){
+Game.prototype.end = function(gameResult){
+	var end = (new Date()).getTime();
+	var secondsPlayed = Math.floor((end-this.startMoment)/1000);
+	if(gameResult == 0){
+		alert("You lost ! Seconds played : " + secondsPlayed + ", Level reached: " + this.currentLevel);
+	}
+	else if(gameResult == 1){
+		alert("You won ! Seconds played : " + secondsPlayed + ", Level reached: " + (this.maximumLevels + 1));
+	}
 	$('.colors').unbind('click');
 	$('#play').show();
 }
