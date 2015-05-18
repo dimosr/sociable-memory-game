@@ -14,17 +14,21 @@ function initiateGame(){
 	var game = new Game(0, 50, 0, 200, 8, 200, "colors", "next-color", colorsNumber, colorIDs);
 
 	$('.colors').click(function(){
-		$(this).animate({"width": "-=" + game.clickEffectWidth + "px"}, game.clickEffectInterval ).animate({"width": "+=" + game.clickEffectWidth + "px"}, game.clickEffectInterval );
-		var id = $(this).attr('id');
+		handleColorSelection(game, $(this));
+	});
+
+	return game;
+}
+
+function handleColorSelection(game, selectedElement){
+	selectedElement.animate({"width": "-=" + game.clickEffectWidth + "px"}, game.clickEffectInterval ).animate({"width": "+=" + game.clickEffectWidth + "px"}, game.clickEffectInterval );
+		var id = selectedElement.attr('id');
 		for(i=0; i<game.colorObjects.length; i++){
 			if(game.colorObjects[i].id == id){
 				var colorNumber = i;
 			}
 		}
-		game.handleNextMove(colorNumber);
-	});
-
-	return game;
+	game.handleNextMove(colorNumber);
 }
 
 /* IE fix */
