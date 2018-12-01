@@ -18,4 +18,4 @@ The game had to be implemented using only HTML, CSS and Javascript (jQuery allow
 
 DEMO
 ----------------
-The game is available online [*HERE*](http://www.dimosraptis.com/sociable-memory-game/)
+The game is available online [*HERE*](http://dimosr.github.io/sociable-memory-game/)
